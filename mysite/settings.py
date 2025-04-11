@@ -26,8 +26,11 @@ SECRET_KEY = 'django-insecure-f)!(_1zx+p&f@lt238a(8%rg_$uj$$w6*s4p!w^+60b8%igjfq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['labverse-1.onrender.com']
-
+ALLOWED_HOSTS = [
+    'labverse-1.onrender.com',  # Your production domain
+    'localhost',                # For local development
+    '127.0.0.1'                 # For local development
+]
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -38,11 +41,14 @@ DEFAULT_FROM_EMAIL = 'labverseiqraahospital@gmail.com'
 
 
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
-CSRF_TRUSTED_ORIGINS = ['labverse-1.onrender.com']
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://labverse-1.onrender.com',  # Must include https://
+    'http://localhost:8000',            # Keep http:// for local dev
+]
 
 
 # settings.py
@@ -72,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
