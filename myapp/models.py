@@ -54,7 +54,7 @@ class Payment(models.Model):
 
     whatsapp_number = models.CharField(max_length=10,blank=True)
 
-    additional_comments = models.CharField(blank=True,default="none comment",max_length=500)
+    additional_comments = models.CharField(blank=True,default=" ",max_length=500)
 
     about_us = models.CharField(max_length=30,choices=CATEGORY_CHOICES_ABOUT_US)
 
@@ -64,9 +64,9 @@ class Payment(models.Model):
 
     def save(self, *args, **kwargs):
         if self.category == 'student':
-            self.amount = 1
+            self.amount = 300
         elif self.category == 'professional':
-            self.amount = 2
+            self.amount = 400
         super().save(*args, **kwargs)
 
 

@@ -1,66 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Payment Receipt</title>
+  <meta charset="UTF-8">
+  <title>Official Payment Invoice</title>
   <style>
     body {
-      /* background-color: #000; */
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
       padding: 40px;
-      margin: 0;
+      background: #f4f4f4;
+      color: #333;
     }
-
-    .receipt-container {
-      background-color: #1c1c1c;
-      border-radius: 15px;
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 30px 40px;
-      /* box-shadow: 0 0 25px rgba(255, 255, 255, 0.05); */
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px 50px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     }
-
-    .receipt-header {
+    h1, h2 {
       text-align: center;
-      /* border-bottom: 1px solid #444; */
-      padding-bottom: 15px;
-      margin-bottom: 25px;
+      margin-bottom: 0;
     }
-
-    .receipt-header h2 {
-      margin: 0;
-      font-size: 24px;
-      letter-spacing: 1px;
-      color: #ffffff;
+    h2 {
+      font-weight: normal;
+      font-size: 18px;
+      color: #777;
+      margin-top: 5px;
     }
-
-    .receipt-details p {
-      font-size: 16px;
-      margin: 12px 0;
-      padding: 8px 12px;
-      /* background-color: #2a2a2a; */
-      /* border-left: 4px solid #6a11cb; */
-      border-radius: 6px;
+    .section {
+      margin-top: 30px;
     }
-
-    .receipt-details strong {
-      color: #ccc;
-      display: inline-block;
-      width: 150px;
+    .section table {
+      width: 100%;
+      line-height: 1.6;
+    }
+    .section td {
+      padding: 5px 0;
+    }
+    .label {
+      font-weight: bold;
+      width: 220px;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #777;
+      border-top: 1px dashed #ccc;
+      padding-top: 10px;
+    }
+    .legal {
+      font-size: 11px;
+      margin-top: 20px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-height: 80px;
     }
   </style>
 </head>
 <body>
-  <div class="receipt-container">
-    <div class="receipt-header">
-      <h2>Payment Receipt</h2>
+  <div class="invoice-box">
+    <div class="logo">
+      <!-- Optional logo -->
+      <!-- <img src="{{ logo_url }}" alt="Organization Logo"> -->
     </div>
-    <div class="receipt-details">
-      <p><strong>Name:</strong> {{ name }}</p>
-      <p><strong>Amount:</strong> ₹{{ amount }}</p>
-      <p><strong>Transaction ID:</strong> {{ transaction_id }}</p>
-      <p><strong>Date:</strong> {{ date }}</p>
+    <h1>Iqraa Hospital</h1>
+    <h2>Official Payment Receipt</h2>
+
+    <div class="section">
+      <table>
+        <tr><td class="label">Name:</td><td>{{ full_name }}</td></tr>
+        <tr><td class="label">Email:</td><td>{{ email }}</td></tr>
+        <tr><td class="label">Contact Number:</td><td>{{ contact }}</td></tr>
+        <tr><td class="label">WhatsApp Number:</td><td>{{ whatsapp_number }}</td></tr>
+        <tr><td class="label">Organisation Name:</td><td>{{ organisation_name }}</td></tr>
+        <tr><td class="label">Job Title:</td><td>{{ job_title }}</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Payment Details</h3>
+      <table>
+        <tr><td class="label">Transaction ID:</td><td>{{ transcation_id }}</td></tr>
+        <tr><td class="label">Bank Transaction ID:</td><td>{{ bank_transaction_id }}</td></tr>
+        <tr><td class="label">Amount Paid:</td><td>{{ amount }}</td></tr>
+        <tr><td class="label">Category:</td><td>{{ category }}</td></tr>
+        <tr><td class="label">Date of Payment:</td><td>{{ created_at }}</td></tr>
+      </table>
+    </div>
+
+    <div class="legal">
+      <strong>Terms & Conditions / Government Compliance:</strong><br>
+      This receipt is generated in accordance with the financial regulations and guidelines issued by the governing authorities. <br>
+      All payments are final and non-refundable unless stated otherwise. Ensure the details are accurate and preserve this receipt for future reference. <br>
+      This document is valid without signature as it is system generated. In case of disputes, hospital administrative policies and government norms will apply.
+    </div>
+
+    <div class="footer">
+      Thank you for your payment.<br>
+      Iqraa Hospital, [Address if needed] — Contact: [Phone or Email]<br>
     </div>
   </div>
 </body>

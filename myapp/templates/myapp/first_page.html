@@ -230,7 +230,16 @@
           <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
           {{ form.category }}
         </div>
-
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Amount</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+          <input type="text" id="amount-field" class="form-control" readonly>
+        </div>
+      </div>
+      
         <div class="mb-3">
           <label class="form-label">Organisation Name</label>
           <div class="input-group">
@@ -301,3 +310,28 @@
 
 
 
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const categoryField = document.querySelector('[name="category"]');
+    const amountField = document.getElementById('amount-field');
+
+    function updateAmount() {
+      const selectedCategory = categoryField.value;
+      let amount = '';
+
+      if (selectedCategory === 'student') {
+        amount = '₹1';
+      } else if (selectedCategory === 'professional') {
+        amount = '₹2';
+      }
+
+      amountField.value = amount;
+    }
+
+    // Update amount on page load and on change
+    categoryField.addEventListener('change', updateAmount);
+    updateAmount();  // In case a value is pre-selected
+  });
+</script>

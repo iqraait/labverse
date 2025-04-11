@@ -29,8 +29,12 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'labverse-1.onrender.com',  # Your production domain
     'localhost',                # For local development
-    '127.0.0.1'                 # For local development
+    '127.0.0.1',                 # For local development
+    '0.0.0.0'                  # Useful for Docker/network access
 ]
+
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -52,18 +56,22 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 
-# HTTPS/SSL Security (MUST HAVE for production)
 SECURE_SSL_REDIRECT = True  # Auto-redirect HTTP → HTTPS
 SESSION_COOKIE_SECURE = True  # Only send cookies over HTTPS
 CSRF_COOKIE_SECURE = True  # Only send CSRF tokens over HTTPS
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # For Render's load balancer
 
 
-# settings.py
+
 
 PAYU_MERCHANT_KEY = 'BBPCSl'
 PAYU_MERCHANT_SALT = 'ETbZpK6lPK2LcMGERfHcD5gXMsDaEgFl'
 PAYU_BASE_URL = 'https://secure.payu.in/_payment'  # Live environment
+
+
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 
 # Application definition

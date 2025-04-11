@@ -9,8 +9,9 @@ urlpatterns = [
     path('success/', payment_success, name='payment-success'),
     path('failure/', payment_failure, name='payment-failure'),
     path('download-receipt/', download_payment_pdf, name='download-receipt'),
-    path('admin-payments-abc123secreturl/', payment_list_view, name='admin-payments'),
+    path('adminpaymentsabc123secreturl/', payment_list_view, name='admin-payments'),
     path('export-payments-csv/', download_payments_csv, name='export-payments-csv'),
+
 
 ]
 

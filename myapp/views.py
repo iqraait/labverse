@@ -14,11 +14,12 @@ from django.contrib.admin.views.decorators import staff_member_required
 import csv
 import datetime
 from django.core.mail import EmailMessage
-
-
-
-
-
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from django.http import HttpResponse
+import tempfile
+from django.http import JsonResponse
 
 
 def get_payu_hash(data, salt):
@@ -115,10 +116,17 @@ def download_payment_pdf(request):
 
     template_path = 'myapp/pdf_template.html'
     context = {
-        'name': payment.full_name,
+        'full_name': payment.full_name,
+        'email': payment.email,
+        'contact': payment.contact,
         'amount': payment.amount,
-        'transaction_id': payment.transcation_id,
-        'date': payment.created_at  # if you have a timestamp field
+        'transcation_id': payment.transcation_id,  # typo is intentional, matches your model
+        'bank_transaction_id': payment.bank_transaction_id,
+        'created_at': payment.created_at.strftime('%d-%m-%Y %H:%M:%S'),  # formatted date
+        'organisation_name': payment.organisation_name,
+        'job_title': payment.job_title,
+        'whatsapp_number': payment.whatsapp_number,
+        'logo_url': request.build_absolute_uri('/static/images/logo.png'),  # optional: if logo used
     }
 
     response = HttpResponse(content_type='application/pdf')
