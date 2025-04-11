@@ -51,6 +51,14 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+
+# HTTPS/SSL Security (MUST HAVE for production)
+SECURE_SSL_REDIRECT = True  # Auto-redirect HTTP → HTTPS
+SESSION_COOKIE_SECURE = True  # Only send cookies over HTTPS
+CSRF_COOKIE_SECURE = True  # Only send CSRF tokens over HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # For Render's load balancer
+
+
 # settings.py
 
 PAYU_MERCHANT_KEY = 'BBPCSl'
