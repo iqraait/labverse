@@ -24,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f)!(_1zx+p&f@lt238a(8%rg_$uj$$w6*s4p!w^+60b8%igjfq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['labverse.onrender.com']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -139,17 +138,17 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Optional: add static dirs if you're using extra ones
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-
-# Tell Django where to find static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Optional global static
-]
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
