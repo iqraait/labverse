@@ -1,0 +1,18 @@
+{%csrf_token%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting to PayU...</title>
+</head>
+<body onload="document.forms['payuForm'].submit();">
+    <h2>Please wait, redirecting to PayU...</h2>
+    <form id="payuForm" name="payuForm" method="post" action="{{ payu_url }}">
+        {% for key, value in posted.items %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}" />
+        {% endfor %}
+        <noscript>
+            <input type="submit" value="Click here if you are not redirected automatically" />
+        </noscript>
+    </form>
+</body>
+</html>

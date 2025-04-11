@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Payment Receipt</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
+      margin: 0;
+    }
+
+    .receipt-container {
+      background-color: #1c1c1c;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 30px 40px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+    }
+
+    .receipt-header {
+      text-align: center;
+      border-bottom: 1px solid #444;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .receipt-header h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    .receipt-details p {
+      font-size: 16px;
+      margin: 12px 0;
+      padding: 8px 12px;
+      background-color: #2a2a2a;
+      border-left: 4px solid #6a11cb;
+      border-radius: 6px;
+    }
+
+    .receipt-details strong {
+      color: #ccc;
+      display: inline-block;
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="receipt-container">
+    <div class="receipt-header">
+      <h2>Payment Receipt</h2>
+    </div>
+    <div class="receipt-details">
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Amount:</strong> ₹{{ amount }}</p>
+      <p><strong>Transaction ID:</strong> {{ transaction_id }}</p>
+      <p><strong>Date:</strong> {{ date }}</p>
+    </div>
+  </div>
+</body>
+</html>
