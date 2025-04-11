@@ -52,9 +52,9 @@ def initiate_payment(request):
         'txnid': txnid,
         'amount': str(payment.amount),
         'productinfo': 'Test Product',
-        'firstname': payment.full_name,  # ✅ real name from DB
-        'email': payment.email,     # ✅ real email from DB
-        'phone': payment.amount,     # ✅ real phone from DB
+        'firstname': payment.full_name, 
+        'email': payment.email,     
+        'phone': payment.amount,    
         'surl': request.build_absolute_uri('/success/'),
         'furl': request.build_absolute_uri('/failure/'),
         'service_provider': 'payu_paisa',
@@ -136,33 +136,6 @@ def download_payment_pdf(request):
 def payment_list_view(request):
     payments = Payment.objects.order_by('-created_at')  # Latest first
     return render(request, 'myapp/payment_list.html', {'payments': payments})
-
-
-# @csrf_exempt
-# def payment_success(request):
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         txnid = request.POST.get('txnid')
-
-#         # Update transaction_id in DB
-#         try:
-#             payment = Payment.objects.get(email=email)
-#             payment.transcation_id = txnid
-#             payment.save()
-
-#         except Payment.DoesNotExist:
-#             pass  # You could log this or handle the case
-
-#         # Send email
-#         # if email and txnid:
-#         #     subject = 'Payment Successful'
-#         #     message = f'Thank you for your payment!\n\nTransaction ID: {txnid}'
-#         #     send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False)
-
-#         return render(request, 'myapp/payment_success.html', {'data': request.POST})
-
-#     return redirect('payment-form')
-
 
 
 @csrf_exempt
