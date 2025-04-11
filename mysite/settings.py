@@ -38,6 +38,13 @@ DEFAULT_FROM_EMAIL = 'labverseiqraahospital@gmail.com'
 
 
 
+
+
+
+CSRF_TRUSTED_ORIGINS = ['labverse-1.onrender.com']
+
+
+
 # settings.py
 
 PAYU_MERCHANT_KEY = 'BBPCSl'
