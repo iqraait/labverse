@@ -64,9 +64,9 @@ class Payment(models.Model):
 
     def save(self, *args, **kwargs):
         if self.category == 'student':
-            self.amount = 300
-        elif self.category == 'professional':
             self.amount = 400
+        elif self.category == 'professional':
+            self.amount = 500
         super().save(*args, **kwargs)
 
 

@@ -18,7 +18,6 @@
       --dark: #343a40;
     } */
 
-    
 
     .sec_1{
       font-family: 'Source Sans Pro', sans-serif;
@@ -165,6 +164,47 @@
         font-size: 16px;
       }
     }   
+
+    .logo_div{
+      display: flex;
+      justify-content: center;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .labverse_img{
+      width: 170px;
+      height: 100px;
+    }
+
+  @media (max-width: 576px) {
+  .labverse_img {
+    max-width: 150px;
+  }
+  }
+  .btn_submit{
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 200px;
+
+
+  }
+  .btn_div{
+    display: flex;
+    justify-content: center;
+  }
+.footer_div{
+  border-top: 1px solid black;
+
+}
+.footer_div_img{
+  width: 50%;
+  height: 80px;
+  object-fit: contain;
+  margin-left: 25%;
+  margin-bottom: 35px;
+}
+
   </style>
 </head>
 
@@ -177,16 +217,19 @@
   <section class="sec_1">
 <div>
   <div class="payment-card">
-    <div class="payment-header">
+    <div class="logo_div">
+      <img  src="{% static 'images/labverse -01.png' %}" alt="IQRAA Hospital Logo" class="labverse_img" />
+    </div>
+    <!-- <div class="payment-header">
       <h2> <span>L</span>AB<span>V</span>ERSE</h2>
       <p class="text-muted">Iqraa International Hospital</p>
-    </div>
+    </div> -->
 
     <form method="post">
       {% csrf_token %}
 
       <div class="mb-3">
-        <label class="form-label">Full Name</label>
+        <label class="form-label">Full Name *</label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-user"></i></span>
           {{ form.full_name }}
@@ -194,7 +237,7 @@
 
       </div>
       <div class="mb-3">
-        <label class="form-label">Email</label>
+        <label class="form-label">Email *</label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
           {{ form.email }}
@@ -209,7 +252,7 @@
       </div>
       
       <div class="mb-3">
-        <label class="form-label">Contact</label>
+        <label class="form-label">Contact *</label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-phone"></i></span>
           {{ form.contact }}
@@ -225,7 +268,7 @@
       
 
       <div class="mb-3">
-        <label class="form-label">Category</label>
+        <label class="form-label">Category *</label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
           {{ form.category }}
@@ -265,7 +308,7 @@
         </div>
         
       <div class="mb-3">
-        <label class="form-label">Meal Preference</label>
+        <label class="form-label">Meal Preference *</label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-utensils"></i></span>
           {{ form.meals }}
@@ -281,7 +324,7 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label">How did you hear about us?</label>
+        <label class="form-label">How did you hear about us? *</label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-info-circle"></i></span>
           {{ form.about_us }}
@@ -295,13 +338,19 @@
           {{ form.additional_comments }}
         </div>
       </div>
-
-      <button type="submit" class="btn btn-submit">Submit Payment</button>
+      <div class="btn_div">
+      <button class="btn_submit" type="submit" class="btn btn-submit">Submit Payment</button>
+    </div>
     </form>
   </div>
 
 </div>
   </section>
+  <footer>
+    <div class="footer_div">
+      <img src="{% static 'images/labverse footer-01.png' %}" alt="" class="footer_div_img">
+    </div>
+  </footer>
 </body>
 </html>
 
@@ -322,9 +371,9 @@
       let amount = '';
 
       if (selectedCategory === 'student') {
-        amount = '₹300';
-      } else if (selectedCategory === 'professional') {
         amount = '₹400';
+      } else if (selectedCategory === 'professional') {
+        amount = '₹500';
       }
 
       amountField.value = amount;
