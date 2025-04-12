@@ -30,9 +30,9 @@ ALLOWED_HOSTS = [
     'labverse-1.onrender.com',  # Your production domain
     'localhost',                # For local development
     '127.0.0.1',                 # For local development
-    '0.0.0.0'                  # Useful for Docker/network access
+    '0.0.0.0',
+    'labverse.iqraahospital.in',          # for aws domain
 ]
-
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
