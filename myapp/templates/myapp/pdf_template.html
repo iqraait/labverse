@@ -63,13 +63,23 @@
     .logo img {
       max-height: 80px;
     }
+    .footer_div{
+  border-top: 1px solid black;
+
+    }
+    .footer_div_img{
+      width: 50%;
+      height: 80px;
+      object-fit: contain;
+      margin-left: 25%;
+      margin-bottom: 35px;
+    }
+
   </style>
 </head>
 <body>
   <div class="invoice-box">
     <div class="logo">
-      <!-- Optional logo -->
-      <!-- <img src="{{ logo_url }}" alt="Organization Logo"> -->
     </div>
     <h1>Iqraa Hospital</h1>
     <h2>Official Payment Receipt</h2>
@@ -103,11 +113,12 @@
       This document is valid without signature as it is system generated. In case of disputes, hospital administrative policies and government norms will apply.
     </div>
 
-    <div class="footer">
-      Thank you for your payment.<br>
-      Iqraa Hospital, Malaparamba — Contact: [Phone or Email]<br>
-    </div>
   </div>
+    <footer>
+    <div class="footer_div">
+      <img src="{% static 'images/labverse footer-01.png' %}" alt="" class="footer_div_img">
+    </div>
+  </footer>
 </body>
 </html>
 
