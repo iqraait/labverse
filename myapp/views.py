@@ -172,7 +172,7 @@ def download_payments_csv(request):
     response['Content-Disposition'] = 'attachment; filename="payments.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Full Name', 'Email', 'Contact', 'Amount', 'Transaction ID', 'Bank Ref ID', 'Created At'])
+    writer.writerow(['Full Name', 'Email', 'Contact', 'Amount', 'Transaction ID', 'Bank Ref ID', 'Created At', 'Meals', 'Additional comments','About US','Organisation','Job Title'])
 
     payments = Payment.objects.all().order_by('-created_at')
 
@@ -184,7 +184,13 @@ def download_payments_csv(request):
             payment.amount,
             payment.transcation_id,
             payment.bank_transaction_id,
-            payment.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            payment.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            payment.meals,
+            payment.additional_comments,
+            payment.about_us,
+            payment.organisation_name,
+            payment.job_title
+
         ])
 
     return response
@@ -222,6 +228,5 @@ def download_payments_csv(request):
 
 #     except Payment.DoesNotExist:
 #         return HttpResponse("No payment found", status=404)
-
 
 

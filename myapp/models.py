@@ -59,8 +59,6 @@ class Payment(models.Model):
 
 
 
-
-
     def save(self, *args, **kwargs):
         if self.category == 'student':
             self.amount = 1
