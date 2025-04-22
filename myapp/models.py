@@ -38,7 +38,6 @@ class Payment(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
 
     transcation_id = models.CharField(max_length=200,
-                                      editable=False,
                                       blank=True)
     
     bank_transaction_id = models.CharField(max_length=100, blank=True, null=True)
@@ -64,9 +63,9 @@ class Payment(models.Model):
 
     def save(self, *args, **kwargs):
         if self.category == 'student':
-            self.amount = 400
+            self.amount = 1
         elif self.category == 'professional':
-            self.amount = 500
+            self.amount = 2
         super().save(*args, **kwargs)
 
 

@@ -204,8 +204,15 @@
   object-fit: contain;
   margin-left: 25%;
   margin-bottom: 35px;
+  margin-top: 30px;
 }
-
+@media (max-width: 768px) {
+  .footer_div_img {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%; /* Takes 90% of screen on smaller devices */
+  }
+}
   </style>
 </head>
 
@@ -347,9 +354,22 @@
 
 </div>
   </section>
+  <!-- <footer>
+    <div class="footer_div">
+      <div class="footer_img_div">
+        <img class="footer_img" src="{% static 'images/iqraa-logo.png' %}" alt="">
+      </div>
+      <div>
+        <h1>malaparm</h1>
+      </div>
+      <div>
+        <h1>malaparm</h1>
+      </div>
+    </div>
+  </footer> -->
   <footer>
     <div class="footer_div">
-      <img src="{% static 'images/labverse footer-01.png' %}" alt="" class="footer_div_img">
+      <img src="{% static 'images/labverse footer-010.png' %}" alt="" class="footer_div_img">
     </div>
   </footer>
 </body>
