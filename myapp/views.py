@@ -197,6 +197,18 @@ def download_payments_csv(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 # def download_receipt(request):
 #     email = request.GET.get('email')
 
